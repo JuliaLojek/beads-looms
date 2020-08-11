@@ -4,9 +4,9 @@ import Home from "../screens/Home";
 import Project from "../screens/Project";
 import { StackNavigationState } from "@react-navigation/native";
 
-type StackParamList = {
+export type StackParamList = {
   Home: undefined;
-  Project: undefined;
+  Project: { id?: number };
 };
 
 const Stack = createStackNavigator<StackParamList>();

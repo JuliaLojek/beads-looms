@@ -1,4 +1,6 @@
 import React from "react";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { StackParamList } from "../navigation/StackNav";
 import {
   StyleSheet,
   View,
@@ -9,14 +11,13 @@ import {
 } from "react-native";
 
 interface HomeProps {
-  navigation: {
-    navigate: Function;
-  };
+  navigation: StackNavigationProp<StackParamList, "Home">;
 }
 
 const Home: React.FC<HomeProps> = ({ navigation }) => {
+
   const buttonPressHandler = () => {
-    navigation.navigate("Project");
+    navigation.navigate("Project", { id: 40 });
   };
 
   return (
