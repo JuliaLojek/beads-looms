@@ -4,13 +4,20 @@ import { NavigationContainer } from "@react-navigation/native";
 import Stack from "./navigation/StackNav";
 import Home from "./screens/Home";
 import Project from "./screens/Project";
+import NavHeader from "./navigation/NavHeader";
 
 function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Project" component={Project} />
+        <Stack.Screen
+          name="Project"
+          component={Project}
+          options={() => {
+            return { header: () => <NavHeader /> };
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
