@@ -14,8 +14,8 @@ function App() {
         <Stack.Screen
           name="Project"
           component={Project}
-          options={() => {
-            return { header: () => <NavHeader /> };
+          options={(props) => {
+            return { header: () => <NavHeader navigation={props.navigation} route={props.route} /> };
           }}
         />
       </Stack.Navigator>

@@ -13,8 +13,8 @@ import { StackParamList } from "../navigation/StackNav";
 // extracting navigation prop and route prop together:
 type ProjectProps = StackScreenProps<StackParamList, "Project">;
 
-const Project: React.FC<ProjectProps> = (props) => {
-  const [projectId, setProjectId] = useState(props.route.params.id);
+const Project: React.FC<ProjectProps> = ({ navigation, route }) => {
+  const [projectId, setProjectId] = useState(route.params.id);
 
   return (
     <View>
