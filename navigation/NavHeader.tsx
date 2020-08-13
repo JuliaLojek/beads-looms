@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
 import { StackParamList } from "./StackNav";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 type ProjectProps = StackScreenProps<StackParamList, "Project">;
 
@@ -13,8 +14,14 @@ const NavHeader: React.FC<ProjectProps> = ({ navigation }) => {
 
   return (
     <View style={styles.navBar}>
-      <AntDesign name="left" size={28} onPress={arrowPressHandler} />
-      <Entypo name="save" size={28} />
+      <TouchableOpacity style={styles.navSection} onPress={arrowPressHandler}>
+        <AntDesign name="left" size={28} />
+        <Text style={styles.navText}>wróć</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.navSection}>
+        <Text style={styles.navText}>zapisz</Text>
+        <Entypo name="save" size={28} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -31,6 +38,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowColor: "#333",
     shadowOpacity: 0.5,
+  },
+  navSection: {
+    flexDirection: "row",
+    alignItems: "flex-end",
+  },
+  navText: {
+    fontSize: 24,
+    paddingHorizontal: 12,
   },
 });
 
