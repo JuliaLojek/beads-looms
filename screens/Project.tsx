@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   Text,
-  FlatList,
   TouchableOpacity,
 } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
@@ -31,6 +30,7 @@ const Project: React.FC<ProjectProps> = ({ navigation, route }) => {
       <ColorPickerModal
         isModalOpen={isModalOpen}
         handleModalClose={() => setIsModalOpen(false)}
+        currentColor={currentColor}
         setCurrentColor={setCurrentColor}
       />
       <View style={styles.colorWrapper}>
