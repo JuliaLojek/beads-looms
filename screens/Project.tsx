@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
 import { StackParamList } from "../navigation/StackNav";
@@ -15,10 +15,14 @@ import ColorPickerModal from "../components/ColorPickerModal";
 // extracting navigation prop and route prop together:
 type ProjectProps = StackScreenProps<StackParamList, "Project">;
 
-const Project: React.FC<ProjectProps> = ({ navigation, route }) => {
-  const [projectId, setProjectId] = useState(route.params.key);
-  const [currentColor, setCurrentColor] = useState("#800080");
+const Project: React.FC<ProjectProps> = ({ route }) => {
+  const [projectName, setProjectName] = useState(route.params.name);
+  const [projectStructure, setProjectStructure] = useState(
+    route.params.structure
+  );
+
   const [isSaved, setIsSaved] = useState(false);
+  const [currentColor, setCurrentColor] = useState("#800080");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -46,6 +50,25 @@ const Project: React.FC<ProjectProps> = ({ navigation, route }) => {
           />
         </TouchableOpacity>
       </View>
+
+      <ScrollView contentContainerStyle={styles.projectWrapper}>
+        <Text style={styles.title}>{projectName}</Text>
+
+        {projectStructure.map((row, index) => {
+          return (
+            <View style={styles.row} key={index}>
+              {row.map((cell, index) => {
+                return (
+                  <View
+                    style={{ ...styles.cell, backgroundColor: cell }}
+                    key={index}
+                  ></View>
+                );
+              })}
+            </View>
+          );
+        })}
+      </ScrollView>
     </View>
   );
 };
@@ -80,6 +103,20 @@ const styles = StyleSheet.create({
   },
   editIcon: {
     paddingLeft: 10,
+  },
+  projectWrapper: {
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 16,
+  },
+  row: {
+    flexDirection: "row",
+  },
+  cell: {
+    width: 20,
+    height: 20,
   },
 });
 
