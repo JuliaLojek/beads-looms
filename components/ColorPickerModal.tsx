@@ -24,7 +24,7 @@ const colorList = [
 
 interface ColorPickerModalProps {
   isModalOpen: boolean;
-  handleModalClose: React.Dispatch<React.SetStateAction<false>>;
+  handleModalClose: () => void;
   currentColor: string;
   setCurrentColor: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -42,14 +42,14 @@ const ColorPickerModal: React.FC<ColorPickerModalProps> = ({
           name="close"
           size={28}
           style={styles.icon}
-          onPress={() => handleModalClose(false)}
+          onPress={handleModalClose}
         />
 
         <ColorPicker
           colors={colorList}
           onSelect={(color) => {
             setCurrentColor(color);
-            handleModalClose(false);
+            handleModalClose();
           }}
           columns={4}
           selectedColor={currentColor}

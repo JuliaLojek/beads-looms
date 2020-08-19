@@ -17,7 +17,7 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ navigation }) => {
 
   const buttonPressHandler = () => {
-    navigation.navigate("Project", { id: 40 });
+    navigation.navigate("Project", { id: "40" });
   };
 
   return (

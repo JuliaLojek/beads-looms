@@ -46,6 +46,8 @@ const Project: React.FC<ProjectProps> = ({ navigation, route }) => {
           />
         </TouchableOpacity>
       </View>
+      <Text>id: {projectId}</Text>
+      <Text>currentColor: {currentColor}</Text>
     </View>
   );
 };
