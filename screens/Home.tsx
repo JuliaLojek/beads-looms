@@ -14,10 +14,20 @@ interface HomeProps {
   navigation: StackNavigationProp<StackParamList, "Home">;
 }
 
-const Home: React.FC<HomeProps> = ({ navigation }) => {
+const defaultProjectData = {
+  key: "001",
+  name: "test",
+  structure: [
+    ["#ff2277", "#ff8877", "#552277"],
+    ["#ccee22", "#aa3344", "#ff2244"],
+    ["#9900aa", "#bcaed4", "#15feb1"],
+  ],
+  shift: false,
+};
 
+const Home: React.FC<HomeProps> = ({ navigation }) => {
   const buttonPressHandler = () => {
-    navigation.navigate("Project", { id: "40" });
+    navigation.navigate("Project", defaultProjectData);
   };
 
   return (

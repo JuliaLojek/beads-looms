@@ -16,7 +16,7 @@ import ColorPickerModal from "../components/ColorPickerModal";
 type ProjectProps = StackScreenProps<StackParamList, "Project">;
 
 const Project: React.FC<ProjectProps> = ({ navigation, route }) => {
-  const [projectId, setProjectId] = useState(route.params.id);
+  const [projectId, setProjectId] = useState(route.params.key);
   const [currentColor, setCurrentColor] = useState("#800080");
   const [isSaved, setIsSaved] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,8 +46,6 @@ const Project: React.FC<ProjectProps> = ({ navigation, route }) => {
           />
         </TouchableOpacity>
       </View>
-      <Text>id: {projectId}</Text>
-      <Text>currentColor: {currentColor}</Text>
     </View>
   );
 };
