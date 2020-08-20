@@ -1,6 +1,6 @@
 import React from "react";
-import { View, StyleSheet, GestureResponderEvent } from "react-native";
-import { PinchGestureHandler, TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { View, Text, StyleSheet, TouchableWithoutFeedback, GestureResponderEvent } from "react-native";
+import { PinchGestureHandler } from "react-native-gesture-handler";
 import { ProjectData } from "../types";
 
 interface ProjectAreaProps {
@@ -8,8 +8,9 @@ interface ProjectAreaProps {
 }
 
 const ProjectArea: React.FC<ProjectAreaProps> = ({ project }) => {
+  
   const cellColorChangeHandler = (event: GestureResponderEvent) => {
-    
+    console.log(event.target)
   }
 
   return (
@@ -20,10 +21,11 @@ const ProjectArea: React.FC<ProjectAreaProps> = ({ project }) => {
             {row.map((cell, index) => {
               return (
                 <TouchableWithoutFeedback
-                  style={{ ...styles.cell, backgroundColor: cell }}
                   key={index}
-                  onPress={(event) => cellColorChangeHandler(event)}
-                ></TouchableWithoutFeedback>
+                  onPress={cellColorChangeHandler}
+                >
+                  <View style={{ ...styles.cell, backgroundColor: cell }}></View>
+                </TouchableWithoutFeedback>
               );
             })}
           </View>
