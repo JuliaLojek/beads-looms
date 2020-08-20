@@ -10,12 +10,23 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: "Beads&Looms",
+            headerStyle: { backgroundColor: "pink" },
+          }}
+        />
         <Stack.Screen
           name="Project"
           component={Project}
           options={(props) => {
-            return { header: () => <NavHeader navigation={props.navigation} route={props.route} /> };
+            return {
+              header: () => (
+                <NavHeader navigation={props.navigation} route={props.route} />
+              ),
+            };
           }}
         />
       </Stack.Navigator>

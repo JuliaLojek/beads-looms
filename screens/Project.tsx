@@ -87,15 +87,6 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     borderWidth: 1,
   },
-  // changeColorButton: {
-  //   flexDirection: "row",
-  //   elevation: 4,
-  //   justifyContent: "flex-end",
-  //   alignItems: "center",
-  //   paddingHorizontal: 10,
-  //   paddingVertical: 4,
-  //   backgroundColor: "pink",
-  // },
   projectWrapper: {
     alignItems: "center",
   },
@@ -109,6 +100,8 @@ const styles = StyleSheet.create({
   cell: {
     width: 20,
     height: 20,
+    borderColor: "#444",
+    borderWidth: 0.5,
   },
 });
 
