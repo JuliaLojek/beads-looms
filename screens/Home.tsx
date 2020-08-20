@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   Button,
 } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { globalStyles } from "../styles/global";
 
 interface HomeProps {
   navigation: StackNavigationProp<StackParamList, "Home">;
@@ -18,9 +20,9 @@ const defaultProjectData = {
   key: "001",
   name: "test",
   structure: [
-    ["#ff2277", "#ff8877", "#552277"],
-    ["#ccee22", "#aa3344", "#ff2244"],
-    ["#9900aa", "#bcaed4", "#15feb1"],
+    ["#ff2277", "#bcaed4", "#ff2277"],
+    ["#bcaed4", "#ff2277", "#bcaed4"],
+    ["#ff2277", "#bcaed4", "#ff2277"],
   ],
   shift: false,
 };
@@ -32,8 +34,17 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
 
   return (
     <View style={styles.main}>
-      <Text>Główna!</Text>
-      <Button title="nowy projekt" onPress={buttonPressHandler} />
+      <TouchableOpacity
+          style={globalStyles.button}
+          onPress={buttonPressHandler}
+        >
+          <AntDesign
+            name="pluscircle"
+            size={22}
+            style={globalStyles.smallIcon}
+          />
+          <Text style={globalStyles.smallText}>nowy projekt</Text>
+        </TouchableOpacity>
     </View>
   );
 };
@@ -42,7 +53,8 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    //justifyContent: "center",
+    paddingTop: 20,
   },
 });
 

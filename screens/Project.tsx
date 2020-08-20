@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
 import { StackParamList } from "../navigation/StackNav";
 import ColorPickerModal from "../components/ColorPickerModal";
+import { globalStyles } from "../styles/global";
 // import { RouteProp } from "@react-navigation/native";
 
 // extracting navigation prop and route prop separately:
@@ -34,19 +35,19 @@ const Project: React.FC<ProjectProps> = ({ route }) => {
         setCurrentColor={setCurrentColor}
       />
       <View style={styles.colorWrapper}>
-        <Text style={styles.bigText}>kolor:</Text>
+        <Text style={globalStyles.bigText}>kolor:</Text>
         <View
           style={{ ...styles.colorBox, backgroundColor: currentColor }}
         ></View>
         <TouchableOpacity
-          style={styles.changeColorButton}
+          style={globalStyles.button}
           onPress={() => setIsModalOpen(true)}
         >
-          <Text style={styles.smallText}>zmień</Text>
+          <Text style={globalStyles.smallText}>zmień</Text>
           <Ionicons
             name="ios-color-palette"
             size={22}
-            style={styles.editIcon}
+            style={globalStyles.smallIcon}
           />
         </TouchableOpacity>
       </View>
@@ -80,30 +81,21 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  bigText: {
-    fontSize: 24,
-  },
-  smallText: {
-    fontSize: 18,
-  },
   colorBox: {
     width: "40%",
     height: 24,
     borderColor: "#000",
     borderWidth: 1,
   },
-  changeColorButton: {
-    flexDirection: "row",
-    elevation: 4,
-    justifyContent: "flex-end",
-    alignItems: "center",
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    backgroundColor: "pink",
-  },
-  editIcon: {
-    paddingLeft: 10,
-  },
+  // changeColorButton: {
+  //   flexDirection: "row",
+  //   elevation: 4,
+  //   justifyContent: "flex-end",
+  //   alignItems: "center",
+  //   paddingHorizontal: 10,
+  //   paddingVertical: 4,
+  //   backgroundColor: "pink",
+  // },
   projectWrapper: {
     alignItems: "center",
   },
