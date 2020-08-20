@@ -4,7 +4,7 @@ import { ProjectData } from "../types";
 
 export type StackParamList = {
   Home: undefined;
-  Project: ProjectData;
+  Project: {project: ProjectData};
 };
 
 const Stack = createStackNavigator<StackParamList>();

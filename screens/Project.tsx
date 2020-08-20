@@ -5,6 +5,7 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { StackParamList } from "../navigation/StackNav";
 import ColorPickerModal from "../components/ColorPickerModal";
 import { globalStyles } from "../styles/global";
+import ProjectArea from "../components/ProjectArea";
 // import { RouteProp } from "@react-navigation/native";
 
 // extracting navigation prop and route prop separately:
@@ -17,9 +18,9 @@ import { globalStyles } from "../styles/global";
 type ProjectProps = StackScreenProps<StackParamList, "Project">;
 
 const Project: React.FC<ProjectProps> = ({ route }) => {
-  const [projectName, setProjectName] = useState(route.params.name);
+  const [projectName, setProjectName] = useState(route.params.project.name);
   const [projectStructure, setProjectStructure] = useState(
-    route.params.structure
+    route.params.project.structure
   );
 
   const [isSaved, setIsSaved] = useState(false);
@@ -55,20 +56,8 @@ const Project: React.FC<ProjectProps> = ({ route }) => {
       <ScrollView contentContainerStyle={styles.projectWrapper}>
         <Text style={styles.title}>{projectName}</Text>
 
-        {projectStructure.map((row, index) => {
-          return (
-            <View style={styles.row} key={index}>
-              {row.map((cell, index) => {
-                return (
-                  <View
-                    style={{ ...styles.cell, backgroundColor: cell }}
-                    key={index}
-                  ></View>
-                );
-              })}
-            </View>
-          );
-        })}
+        <ProjectArea project={route.params.project} />
+
       </ScrollView>
     </View>
   );
@@ -93,15 +82,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     marginBottom: 16,
-  },
-  row: {
-    flexDirection: "row",
-  },
-  cell: {
-    width: 20,
-    height: 20,
-    borderColor: "#444",
-    borderWidth: 0.5,
   },
 });
 

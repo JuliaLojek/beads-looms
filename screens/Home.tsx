@@ -29,7 +29,7 @@ const defaultProjectData = {
 
 const Home: React.FC<HomeProps> = ({ navigation }) => {
   const buttonPressHandler = () => {
-    navigation.navigate("Project", defaultProjectData);
+    navigation.navigate("Project", {project: defaultProjectData});
   };
 
   return (
