@@ -16,6 +16,7 @@ function App() {
           options={{
             title: "Beads&Looms",
             headerStyle: { backgroundColor: "pink" },
+            headerTitleAlign: "center",
           }}
         />
         <Stack.Screen
