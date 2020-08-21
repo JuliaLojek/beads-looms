@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { StackScreenProps } from "@react-navigation/stack";
 import { StackParamList } from "../navigation/StackNav";
@@ -56,8 +62,12 @@ const Project: React.FC<ProjectProps> = ({ route }) => {
       <ScrollView contentContainerStyle={styles.projectWrapper}>
         <Text style={styles.title}>{projectName}</Text>
 
-        <ProjectArea project={route.params.project} />
-
+        <ProjectArea
+          currentColor={currentColor}
+          isShifted={route.params.project.isShifted}
+          projectStructure={projectStructure}
+          setProjectStructure={setProjectStructure}
+        />
       </ScrollView>
     </View>
   );

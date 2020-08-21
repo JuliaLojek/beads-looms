@@ -1,30 +1,51 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableWithoutFeedback, GestureResponderEvent } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  GestureResponderEvent,
+} from "react-native";
 import { PinchGestureHandler } from "react-native-gesture-handler";
 import { ProjectData } from "../types";
 
 interface ProjectAreaProps {
-  project: ProjectData
+  currentColor: string;
+  isShifted: boolean;
+  projectStructure: string[][];
+  setProjectStructure: React.Dispatch<React.SetStateAction<string[][]>>;
 }
 
-const ProjectArea: React.FC<ProjectAreaProps> = ({ project }) => {
-  
-  const cellColorChangeHandler = (event: GestureResponderEvent) => {
-    console.log(event.target)
-  }
+const ProjectArea: React.FC<ProjectAreaProps> = ({ currentColor, isShifted, projectStructure, setProjectStructure }) => {
+  const cellColorChangeHandler = (
+    event: GestureResponderEvent,
+    rowIndex: number,
+    cellIndex: number
+  ) => {
+    setProjectStructure((prevStructure) => {
+      const newStructure = [...prevStructure];
+      newStructure[rowIndex][cellIndex] = currentColor;
+      return newStructure;
+    })
+  };
 
   return (
     <>
-      {project.structure.map((row, index) => {
+      {projectStructure.map((row, index) => {
+        const rowIndex = index;
         return (
           <View style={styles.row} key={index}>
             {row.map((cell, index) => {
               return (
                 <TouchableWithoutFeedback
                   key={index}
-                  onPress={cellColorChangeHandler}
+                  onPress={(event) =>
+                    cellColorChangeHandler(event, rowIndex, index)
+                  }
                 >
-                  <View style={{ ...styles.cell, backgroundColor: cell }}></View>
+                  <View
+                    style={{ ...styles.cell, backgroundColor: cell }}
+                  ></View>
                 </TouchableWithoutFeedback>
               );
             })}
@@ -45,6 +66,7 @@ const styles = StyleSheet.create({
     borderColor: "#444",
     borderWidth: 0.5,
   },
+  
 });
 
 export default ProjectArea;

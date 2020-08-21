@@ -24,7 +24,7 @@ const defaultProjectData = {
     ["#bcaed4", "#ff2277", "#bcaed4"],
     ["#ff2277", "#bcaed4", "#ff2277"],
   ],
-  shift: false,
+  isShifted: false,
 };
 
 const Home: React.FC<HomeProps> = ({ navigation }) => {
