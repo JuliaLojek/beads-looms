@@ -46,8 +46,11 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
         <Text style={globalStyles.smallText}>nowy projekt</Text>
       </TouchableOpacity>
 
+      <Text style={styles.text}>Moje projekty:</Text>
+
       <ProjectList
         projects={projects}
+        navigation={navigation}
       />
     </View>
   );
@@ -57,9 +60,12 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     alignItems: "center",
-    //justifyContent: "center",
     paddingTop: 20,
   },
+  text: {
+    fontSize: 20,
+    marginTop: 24,
+  }
 });
 
 export default Home;
